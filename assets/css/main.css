@@ -3451,8 +3451,6 @@ body.is-preload .gallery.onload-fade-in article .image img {
 			left: -1000%;
 			top: 0;
 			z-index: 1;
-			box-shadow: inset 0px 0px 0px 1px #e8e8e8;
-			background: #f6f8fb url("images/image-wrapper.svg");
 		}
 
 	#header-wrapper {
@@ -3670,6 +3668,7 @@ body.is-preload .gallery.onload-fade-in article .image img {
 			border-color: rgba(255, 255, 255, 0);
 			color: #f08c89;
 			font-size: 1.25em;
+			margin-bottom: 1em;
 		}
 
 			#hero .button:hover {
