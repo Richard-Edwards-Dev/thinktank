@@ -310,4 +310,3 @@
 })(jQuery);
 
 console.log('Gallery found:', $('.gallery').length); // Check if gallery is found
-console.log('Buttons should be added here.');
