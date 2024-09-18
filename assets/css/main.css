@@ -2408,6 +2408,7 @@ body.is-preload .gallery.onload-fade-in article .image img {
 		color: #ffffff;
 	}
 
+
 	.gallery.style1 a {
 		color: #ffffff;
 	}
@@ -3434,6 +3435,12 @@ body.is-preload .gallery.onload-fade-in article .image img {
 		background-color: #7fd2fc;
 	}
 
+	.wrapper.style1 > .inner {
+		margin: 0 auto;
+		max-width: 100%;
+		width: 64rem;
+	}
+
 	.image-wrapper {
 		position: relative;
 	}
@@ -3480,6 +3487,10 @@ body.is-preload .gallery.onload-fade-in article .image img {
 		background-size: 100% 620%;
 		background-size: 128px 128px, 100% 620%, auto;
 		background-repeat: repeat, no-repeat, no-repeat;
+	}
+
+	#gallery-wrapper h2, #gallery-wrapper p {
+		text-align: center;
 	}
 
 
