@@ -3494,6 +3494,7 @@ body.is-preload .gallery.onload-fade-in article .image img {
 		background-size: 100% 620%;
 		background-size: 128px 128px, 100% 620%, auto;
 		background-repeat: repeat, no-repeat, no-repeat;
+		object-fit: cover;
 	}
 
 	#gallery-wrapper h2, #gallery-wrapper p {
