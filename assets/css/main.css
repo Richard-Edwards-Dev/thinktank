@@ -94,8 +94,8 @@ input, select, textarea {
 		line-height: 1.75em;
 		font-size: 14pt;
 	}
-	.castoro-regular {
-		font-family: "Castoro", serif;
+	.typewriter {
+		font-family: "American Typewriter Regular";
 		font-weight: 400;
 		font-style: normal;
 		text-shadow: 1px 1px 2px pink;
@@ -202,6 +202,13 @@ input, select, textarea {
 
 	.feature {
 		text-align: center;
+	}
+
+	.large-buttons {
+		border-radius: 2em;
+		height: 30em;
+		width: 25em;
+		background-color:#1ebdd1;
 	}
 
 /* Sections/Article */
@@ -2482,7 +2489,7 @@ body.is-preload .gallery.onload-fade-in article .image img {
 			.gallery.style1 input[type="button"].primary:hover,
 			.gallery.style1 button.primary:hover,
 			.gallery.style1 .button.primary:hover {
-				background-color: #47D3E5;
+				background-color: #47d3e6;
 			}
 
 			.gallery.style1 input[type="submit"].primary:active,
