@@ -129,3 +129,44 @@ $('.gallery')
         .css('overflow-y', browser.mobile ? 'visible' : 'hidden')
         .css('overflow-x', browser.mobile ? 'scroll' : 'hidden')
         .scrollLeft(0);
+
+
+
+
+        	// Dropdowns.
+		$('#nav > ul').dropotron({
+			mode: 'fade',
+			speed: 300,
+			alignment: 'center',
+			noOpenerFade: true
+		});
+
+	// Nav.
+
+		// Button.
+			$(
+				'<div id="navButton">' +
+					'<a href="#navPanel" class="toggle"></a>' +
+				'</div>'
+			)
+				.appendTo($body);
+
+		// Panel.
+			$(
+				'<div id="navPanel">' +
+					'<nav>' +
+						'<a href="index.html" class="link depth-0">Home</a>' +
+						$('#nav').navList() +
+					'</nav>' +
+				'</div>'
+			)
+				.appendTo($body)
+				.panel({
+					delay: 500,
+					hideOnClick: true,
+					resetScroll: true,
+					resetForms: true,
+					side: 'top',
+					target: $body,
+					visibleClass: 'navPanel-visible'
+				});
