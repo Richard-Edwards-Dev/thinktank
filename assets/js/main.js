@@ -117,29 +117,7 @@
 	// Gallery.
 		$('.gallery')
 			.wrapInner('<div class="inner"></div>')
-			.prepend(browser.mobile ? '' : '<div class="forward"></div><div class="backward"></div>')
-			.scrollex({
-				top:		'30vh',
-				bottom:		'30vh',
-				delay:		50,
-				initialize:	function() {
-					$(this).addClass('is-inactive');
-				},
-				terminate:	function() {
-					$(this).removeClass('is-inactive');
-				},
-				enter:		function() {
-					$(this).removeClass('is-inactive');
-				},
-				leave:		function() {
 
-					var $this = $(this);
-
-					if ($this.hasClass('onscroll-bidirectional'))
-						$this.addClass('is-inactive');
-
-				}
-			})
 			.children('.inner')
 				//.css('overflow', 'hidden')
 				.css('overflow-y', browser.mobile ? 'visible' : 'hidden')
@@ -147,46 +125,102 @@
 				.scrollLeft(0);
 
 		// Style #1.
-			// ...
+		let currentSlide = 0;
+		const slides = $('.gallery .inner').children(); // Get the slides
+		const totalSlides = slides.length;
+		slides.removeClass('active'); // Hide all slides
+
+		function updateSlide(index) {
+			
+			$(slides[index % totalSlides]).addClass('active'); // Show the current slide
+			const randomAngle = Math.random() * 25 * (index % 2 ? -1 : 1); 
+        	slides[index % totalSlides].style.transform = `rotate(${randomAngle}deg)` 
+			slides[index % totalSlides].style.zIndex = index;
+		}
+
+		let autoSlideInterval = setInterval(function () {
+			currentSlide = (currentSlide + 1) ;
+			updateSlide(currentSlide);
+		}, 5000); // Change every 5 seconds
+		
+		// Pause on hover
+		$('.gallery').on('mouseenter', function () {
+			clearInterval(autoSlideInterval);
+		}).on('mouseleave', function () {
+			autoSlideInterval = setInterval(function () {
+				currentSlide = (currentSlide + 1) % totalSlides;
+				updateSlide(currentSlide);
+			}, 5000);
+		});
+
+		updateSlide(currentSlide);
+
+		// quote gallery.
+		let currentQuote = 0;
+		const quotes = $('.quotegallery').children(); // Get the slides
+		const totalQuotes = quotes.length;
+
+		function updateQuote(index) {
+			quotes.removeClass('active'); // Hide all slides
+			$(quotes[index]).addClass('active'); // Show the current slide
+		}
+
+		let autoQuotesInterval = setInterval(function () {
+			currentQuote = (currentQuote + 1) % totalQuotes;
+			updateQuote(currentQuote);
+		}, 5000); // Change every 5 seconds
+		
+		// Pause on hover
+		$('.quotesGallery').on('mouseenter', function () {
+			clearInterval(autoQuotesInterval);
+		}).on('mouseleave', function () {
+			autoQuotesInterval = setInterval(function () {
+				currentQuote = (currentQuote + 1) % totalSlides;
+				updateSlide(currentQuote);
+			}, 5000);
+		});
+
+		updateQuote(currentQuote);
+
 
 		// Style #2.
-			$('.gallery')
-				.on('wheel', '.inner', function(event) {
+			// $('.gallery')
+			// 	.on('wheel', '.inner', function(event) {
 
-					var	$this = $(this),
-						delta = (event.originalEvent.deltaX * 10);
+			// 		var	$this = $(this),
+			// 			delta = (event.originalEvent.deltaX * 10);
 
-					// Cap delta.
-						if (delta > 0)
-							delta = Math.min(25, delta);
-						else if (delta < 0)
-							delta = Math.max(-25, delta);
+			// 		// Cap delta.
+			// 			if (delta > 0)
+			// 				delta = Math.min(25, delta);
+			// 			else if (delta < 0)
+			// 				delta = Math.max(-25, delta);
 
-					// Scroll.
-						$this.scrollLeft( $this.scrollLeft() + delta );
+			// 		// Scroll.
+			// 			$this.scrollLeft( $this.scrollLeft() + delta );
 
-				})
-				.on('mouseenter', '.forward, .backward', function(event) {
+			// 	})
+			// 	.on('mouseenter', '.forward, .backward', function(event) {
 
-					var $this = $(this),
-						$inner = $this.siblings('.inner'),
-						direction = ($this.hasClass('forward') ? 1 : -1);
+			// 		var $this = $(this),
+			// 			$inner = $this.siblings('.inner'),
+			// 			direction = ($this.hasClass('forward') ? 1 : -1);
 
-					// Clear move interval.
-						clearInterval(this._gallery_moveIntervalId);
+			// 		// Clear move interval.
+			// 			clearInterval(this._gallery_moveIntervalId);
 
-					// Start interval.
-						this._gallery_moveIntervalId = setInterval(function() {
-							$inner.scrollLeft( $inner.scrollLeft() + (5 * direction) );
-						}, 10);
+			// 		// Start interval.
+			// 			this._gallery_moveIntervalId = setInterval(function() {
+			// 				$inner.scrollLeft( $inner.scrollLeft() + (5 * direction) );
+			// 			}, 10);
 
-				})
-				.on('mouseleave', '.forward, .backward', function(event) {
+			// 	})
+			// 	.on('mouseleave', '.forward, .backward', function(event) {
 
-					// Clear move interval.
-						clearInterval(this._gallery_moveIntervalId);
+			// 		// Clear move interval.
+			// 			clearInterval(this._gallery_moveIntervalId);
 
-				});
+			// 	});
 
 		// Lightbox.
 			$('.gallery.lightbox')
@@ -221,6 +255,8 @@
 
 					// Focus.
 						$modal.focus();
+						console.log('Clicked href:', href); // Log the href value
+						console.log('Modal visible:', $modal.hasClass('active')); // Check if modal visibility is triggered
 
 					// Delay.
 						setTimeout(function() {

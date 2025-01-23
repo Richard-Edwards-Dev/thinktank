@@ -1885,6 +1885,7 @@ input, select, textarea {
 			}
 /* Gallery (transitions) */
 
+
 .gallery.onload-fade-in article .image img {
 	-moz-transition: opacity 0.75s ease-in-out;
 	-webkit-transition: opacity 0.75s ease-in-out;
@@ -2900,6 +2901,7 @@ body.is-preload .gallery.onload-fade-in article .image img {
 		position: relative;
 		overflow: hidden;
 		width: 22.5rem;
+		right: 0;
 		max-width: 75vw;
 	}
 
@@ -3239,6 +3241,87 @@ body.is-preload .gallery.onload-fade-in article .image img {
 
 .gallery article .image {
 	background-color: rgba(0, 0, 0, 0.125);
+}
+
+.gallery.style2.medium.lightbox.onscroll-fade-in {
+
+}
+
+.gallery .inner > * {
+	display: none !important;
+;
+}
+.gallery .inner > *.active {
+	display: inline !important;
+	animation-name: fade !important;
+	animation-duration: 4.5s!important;
+}
+
+.gallery .modal img {
+    display: block !important; /* Override `display: none !important` */
+    animation: none !important; /* Disable animations for modal images */
+}
+
+.quotegallery > * {
+	display: none !important;
+;
+}
+.quotegallery > *.active {
+	display: inline !important;
+	animation-name: fade !important;
+	animation-duration: 4.5s!important;
+}
+
+
+
+
+.gallery.style2 {
+	position: relative; /* Establish positioning context for children */
+	height: 40rem;      /* Set a fixed height for the gallery */
+  }
+  
+  .gallery.style2 article {
+	position: absolute; /* Position articles on top of each other */
+	top: 5rem;
+	left: 15%;
+	height: 100%;       /* Match the gallery's height */
+  }
+  
+  .gallery.style2 article .image img {
+	width: 100%;        /* Ensure images fill the container */
+	height: 100%;
+	object-fit: cover;  /* Maintain aspect ratio and cover the container */
+  }
+  
+  .gallery.style2 article .caption {
+	bottom: 0;
+	left: 0;
+	background: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+	color: white;
+	padding: 10px;
+	text-align: left;
+  }
+  
+.quotes{
+	margin: auto;
+	text-align: center;
+}
+
+/* Fading animation */
+.style2 {
+	animation-name: fade;
+	animation-duration: 1.5s;
+  }
+  
+  @keyframes fade {
+	from {opacity: .4} 
+	to {opacity: 1}
+  }
+
+
+/* Logo */
+.logo {
+	margin-top: -10rem;
 }
 
 /* Menu */
