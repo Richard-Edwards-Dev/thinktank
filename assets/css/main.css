@@ -3279,6 +3279,12 @@ body.is-preload .gallery.onload-fade-in article .image img {
 	position: relative; /* Establish positioning context for children */
 	height: 40rem;      /* Set a fixed height for the gallery */
   }
+
+.quotegallery {
+	height: 5rem;
+}
+
+
   
   .gallery.style2 article {
 	position: absolute; /* Position articles on top of each other */
@@ -3317,7 +3323,17 @@ body.is-preload .gallery.onload-fade-in article .image img {
 	from {opacity: .4} 
 	to {opacity: 1}
   }
+  @media screen and (max-width: 480px) {
 
+	#gallery-wrapper  *, #gallery-wrapper{
+		overflow: visible !important;
+	}
+
+	.gallery.style2 article .image img  {
+		object-fit: contain;
+	}
+	
+  }
 
 /* Logo */
 .logo {
